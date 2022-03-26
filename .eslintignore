@@ -1,0 +1,7 @@
+.husky
+coverage
+node_modules
+public
+
+jest.*.ts
+src/testUtils.ts

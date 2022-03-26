@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "module": "esnext", /* specifies module code generation */
+    "moduleResolution": "node", /* resolves modules using Node engine */
+    "target": "es5",
+
+    "allowJs": true, /* allows javaScript files to be compiled */
+    "allowSyntheticDefaultImports": true, /* allows default imports from modules with no default export */
+    "allowUnreachableCode": false,
+    "declaration": true, /* generate corresponding .d.ts file */
+    "esModuleInterop": true, /* disables namespace imports (import * as fs from "fs") and enables CJS/AMD/UMD style imports (import fs from "fs") */
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "importHelpers": true,
+    "isolatedModules": true, /* unconditionally emits imports for unresolved files */
+    "jsx": "react-jsx", /* Support JSX in .tsx files (This one comes in handy sometimes) */
+    "noEmit": true, /* Not to compile code, only performs type checking */
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true, /* reports errors on unused locals (suggested for clean code writing) */
+    "noUnusedParameters": true, /* report errors on unused parameters (again, suggested for clean code writing) */
+    "pretty": true,
+    "removeComments": true,
+    "resolveJsonModule": true, /* includes modules imported with .json extension */
+    "skipLibCheck": true, /* skip type checking of all declaration files */
+    "sourceMap": true, /* generates corrresponding .map file */
+    "strict": true, /* enables all strict type checking options */
+
+    "baseUrl": "./src",
+    "paths": {
+      "@types": ["types"],
+    },
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "types": [
+      "node",
+      "@types/jest",
+      "@types/node",
+      "@types/react",
+      "@types/react-dom"
+    ]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
+}
