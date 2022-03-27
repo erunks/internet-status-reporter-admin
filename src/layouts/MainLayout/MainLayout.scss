@@ -1,0 +1,20 @@
+@use 'styles/includes';
+
+.main-layout__sidebar {
+  display: flex;
+  flex-direction: column-reverse;
+
+  & > .ant-layout-sider-children {
+    padding-top: 24px;
+  }
+
+  & > .ant-layout-sider-trigger {
+    bottom: unset;
+    position: relative;
+  }
+
+  .ant-menu-item,
+  .ant-menu-item-icon {
+    font-size: 16px;
+  }
+}
