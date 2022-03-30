@@ -1,14 +1,23 @@
 import { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot, Root } from 'react-dom/client';
 import ApplicationRouter from 'routes';
 import './styles/index.scss';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(
+const root = (): Root => {
+  let container = document.getElementById('root');
+  if (container === null) {
+    container = document.createElement('div');
+    container.id = 'root';
+    document.body.appendChild(container);
+  }
+  return createRoot(container);
+};
+
+root().render(
   <StrictMode>
     <ApplicationRouter />
-  </StrictMode>,
-  document.getElementById('root')
+  </StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
