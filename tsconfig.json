@@ -28,9 +28,6 @@
     "strict": true, /* enables all strict type checking options */
 
     "baseUrl": "./src",
-    "paths": {
-      "@types": ["types"],
-    },
     "lib": [
       "dom",
       "dom.iterable",
