@@ -38,7 +38,8 @@
       "@types/jest",
       "@types/node",
       "@types/react",
-      "@types/react-dom"
+      "@types/react-dom",
+      "@types/styled-components"
     ]
   },
   "include": [

@@ -1,0 +1,19 @@
+@use 'styles/includes';
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .page__content,
+  .page__footer {
+    padding: 8px 16px;
+  }
+
+  .page__content {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+  }
+}

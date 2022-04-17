@@ -1,19 +1,35 @@
 import { useState, FC } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Menu } from 'antd';
+import { useLocation, Link } from 'react-router-dom';
+import style from 'styled-components';
+import { Layout, Menu, MenuItemProps } from 'antd';
 import {
+  BarChartOutlined,
   CloseOutlined,
   DashboardOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
-
+import { neutralDarkPalette } from 'helpers';
 import './MainLayout.scss';
 
 const { Content, Sider } = Layout;
-const { Item } = Menu;
+const StyledItem: FC<MenuItemProps> = style(Menu.Item)`
+  &:hover {
+    background-color: ${neutralDarkPalette?.[1]} !important;
+  }
+  &.ant-menu-item-selected:hover {
+    background-color: var(--ant-primary-color-hover) !important;
+  }
+`;
 
 const MainLayout: FC = ({ children }) => {
+  const { pathname } = useLocation();
   const [collapsed, setCollapsed] = useState<boolean>(true);
+
+  const currentPath =
+    pathname
+      .split('/')
+      .filter((p) => p)
+      .pop() ?? 'overview';
 
   const toggle = (collapseState: boolean): void => setCollapsed(collapseState);
   const iconStyle = { fontSize: '16px' };
@@ -27,6 +43,7 @@ const MainLayout: FC = ({ children }) => {
         collapsed={collapsed}
         defaultCollapsed
         onCollapse={toggle}
+        style={{ backgroundColor: neutralDarkPalette?.[0] }}
         trigger={
           collapsed ? (
             <MenuOutlined style={iconStyle} />
@@ -35,14 +52,26 @@ const MainLayout: FC = ({ children }) => {
           )
         }
       >
-        <Menu defaultSelectedKeys={['overview']} mode="inline" theme="dark">
-          <Item
+        <Menu
+          mode="inline"
+          selectedKeys={[currentPath]}
+          style={{ backgroundColor: neutralDarkPalette?.[0] }}
+          theme="dark"
+        >
+          <StyledItem
             icon={<DashboardOutlined style={iconStyle} />}
             key="overview"
             title="Overview"
           >
             <Link to="/">Overview</Link>
-          </Item>
+          </StyledItem>
+          <StyledItem
+            icon={<BarChartOutlined style={iconStyle} />}
+            key="outtages"
+            title="Outtages"
+          >
+            <Link to="/outtages">Outtages</Link>
+          </StyledItem>
         </Menu>
       </Sider>
       <Layout>

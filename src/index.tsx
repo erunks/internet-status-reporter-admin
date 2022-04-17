@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot, Root } from 'react-dom/client';
+import { ConfigProvider } from 'antd';
 import ApplicationRouter from 'routes';
 import './styles/index.scss';
 import reportWebVitals from './reportWebVitals';
@@ -16,7 +17,9 @@ const root = (): Root => {
 
 root().render(
   <StrictMode>
-    <ApplicationRouter />
+    <ConfigProvider>
+      <ApplicationRouter />
+    </ConfigProvider>
   </StrictMode>
 );
 
