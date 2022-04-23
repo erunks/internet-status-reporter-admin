@@ -4,7 +4,8 @@ import { ApiResponse } from 'types/apiResponse';
 import axios from 'axios';
 import { axiosHeaders } from 'helpers';
 import { API_HOST } from 'helpers/constants';
-import * as OuttageResponse from 'fixtures/outtages_response.json';
+import * as OuttageSuccessResponse from 'fixtures/outtages_success_response.json';
+import * as OuttageErrorResponse from 'fixtures/outtages_error_response.json';
 import useOuttages from '.';
 
 const getSpy = jest.spyOn(axios, 'get');
@@ -12,7 +13,12 @@ const getSpy = jest.spyOn(axios, 'get');
 describe('useOuttages', () => {
   it('returns an OuttageResponse object', () => {
     const { result } = renderHook(() => useOuttages({}));
-    expect(Object.keys(result.current)).toEqual(['data', 'loading', 'error']);
+    expect(Object.keys(result.current)).toEqual([
+      'data',
+      'loading',
+      'error',
+      'meta',
+    ]);
   });
 
   describe('the request', () => {
@@ -34,19 +40,32 @@ describe('useOuttages', () => {
     });
 
     describe('when the request is successful', () => {
-      const { data } = OuttageResponse as ApiResponse;
-
       it('sets the data', async () => {
         getSpy.mockResolvedValue({
           status: 200,
-          data: { data },
+          data: OuttageSuccessResponse as ApiResponse,
         });
 
         const { result, waitForNextUpdate } = renderHook(() => useOuttages({}));
 
         await waitForNextUpdate();
 
-        expect(result.current.data).toEqual(data);
+        expect(result.current.data).toEqual(OuttageSuccessResponse?.data);
+      });
+
+      it('sets the meta', async () => {
+        getSpy.mockResolvedValue({
+          status: 200,
+          data: OuttageSuccessResponse as ApiResponse,
+        });
+
+        const { result, waitForNextUpdate } = renderHook(() => useOuttages({}));
+
+        expect(result.current.meta).toEqual({ totalCount: 0 });
+
+        await waitForNextUpdate();
+
+        expect(result.current.meta).toEqual(OuttageSuccessResponse?.meta);
       });
     });
 
@@ -54,14 +73,31 @@ describe('useOuttages', () => {
       it('sets the error state', async () => {
         getSpy.mockResolvedValue({
           status: 500,
-          data: 'Internal Server Error',
+          data: OuttageErrorResponse as ApiResponse,
         });
 
         const { result, waitForNextUpdate } = renderHook(() => useOuttages({}));
 
         await waitForNextUpdate();
 
-        expect(result.current.error).toEqual('Internal Server Error');
+        expect(result.current.error).toEqual(
+          OuttageErrorResponse?.errors?.[0]?.detail
+        );
+      });
+
+      it('sets the meta', async () => {
+        getSpy.mockResolvedValue({
+          status: 500,
+          data: OuttageErrorResponse as ApiResponse,
+        });
+
+        const { result, waitForNextUpdate } = renderHook(() => useOuttages({}));
+
+        expect(result.current.meta).toEqual({ totalCount: 0 });
+
+        await waitForNextUpdate();
+
+        expect(result.current.meta).toEqual(OuttageErrorResponse?.meta);
       });
     });
   });

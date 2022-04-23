@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "type": "outtage",
+      "id": "4822",
+      "attributes": {
+        "info": {
+          "amazon.com": {
+            "deviation": 18.200073137826184,
+            "max": 88.77,
+            "mean": 64.292,
+            "min": 39.03
+          },
+          "cloudflare.com": {
+            "deviation": 327.11872251863275,
+            "max": 1091.19,
+            "mean": 160.54000000000002,
+            "min": 45.52
+          },
+          "google.com": {
+            "deviation": 26.046624008155497,
+            "max": 122.56,
+            "mean": 64.60999999999999,
+            "min": 44.02
+          },
+          "youtube.com": {
+            "deviation": 15.62841514677672,
+            "max": 90.11,
+            "mean": 59.00599999999999,
+            "min": 45.78
+          }
+        },
+        "downtime": "0:01:05.439150",
+        "maintenance": false,
+        "loss": 10.0,
+        "createdAt": "2022-04-23T16:18:35"
+      }
+    },
+    {
+      "type": "outtage",
+      "id": "4821",
+      "attributes": {
+        "createdAt": "2022-04-23T11:22:34",
+        "loss": 5.0,
+        "info": {
+          "amazon.com": {
+            "deviation": 55.76801959904977,
+            "max": 181.64,
+            "mean": 75.311,
+            "min": 38.7
+          },
+          "cloudflare.com": {
+            "deviation": 23.61989782647955,
+            "max": 102.34,
+            "mean": 60.912,
+            "min": 42.63
+          },
+          "google.com": {
+            "deviation": 25.559258813805833,
+            "max": 115.93,
+            "mean": 65.12,
+            "min": 40.17
+          },
+          "youtube.com": {
+            "deviation": 11.900473193206322,
+            "max": 78.65,
+            "mean": 50.968,
+            "min": 41.96
+          }
+        },
+        "downtime": "0:01:04.338349",
+        "maintenance": false
+      }
+    }
+  ],
+  "meta": {
+    "totalCount": 4742
+  }
+}

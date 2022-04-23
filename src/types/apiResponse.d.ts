@@ -37,7 +37,21 @@ interface OuttageResponseData extends JsonApiResponseData {
 }
 
 export type ApiResponseData = ModemEventResponseData | OuttageResponseData;
+export interface ApiResponseError {
+  status: string;
+  detail: string;
+  source?: {
+    pointer?: string;
+    parameter?: string;
+  };
+}
+
+export interface ApiResponseMeta {
+  totalCount: number;
+}
 
 export interface ApiResponse {
   data?: ApiResponseData[];
+  errors?: ApiResponseError[];
+  meta?: ApiResponseMeta;
 }

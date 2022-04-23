@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "status": "500",
+      "detail": "Query Error: error occurred while decoding column \"info\": expected value at line 1 column 1"
+    }
+  ],
+  "meta": {
+    "totalCount": 8
+  }
+}
