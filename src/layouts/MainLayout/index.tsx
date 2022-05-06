@@ -1,7 +1,7 @@
 import { useState, FC } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import style from 'styled-components';
-import { Layout, Menu, MenuItemProps } from 'antd';
+import { Layout, Menu } from 'antd';
+import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 import {
   BarChartOutlined,
   CloseOutlined,
@@ -12,14 +12,6 @@ import { neutralDarkPalette } from 'helpers';
 import './MainLayout.scss';
 
 const { Content, Sider } = Layout;
-const StyledItem: FC<MenuItemProps> = style(Menu.Item)`
-  &:hover {
-    background-color: ${neutralDarkPalette?.[1]} !important;
-  }
-  &.ant-menu-item-selected:hover {
-    background-color: var(--ant-primary-color-hover) !important;
-  }
-`;
 
 const MainLayout: FC = ({ children }) => {
   const { pathname } = useLocation();
@@ -33,6 +25,21 @@ const MainLayout: FC = ({ children }) => {
 
   const toggle = (collapseState: boolean): void => setCollapsed(collapseState);
   const iconStyle = { fontSize: '16px' };
+
+  const menuItems: ItemType[] = [
+    {
+      key: 'overview',
+      icon: <DashboardOutlined style={iconStyle} />,
+      title: 'Overview',
+      label: <Link to="/">Overview</Link>,
+    },
+    {
+      key: 'outtages',
+      icon: <BarChartOutlined style={iconStyle} />,
+      title: 'Outtages',
+      label: <Link to="/outtages">Outtages</Link>,
+    },
+  ];
 
   return (
     <Layout className="main-layout" hasSider>
@@ -56,23 +63,9 @@ const MainLayout: FC = ({ children }) => {
           mode="inline"
           selectedKeys={[currentPath]}
           style={{ backgroundColor: neutralDarkPalette?.[0] }}
+          items={menuItems}
           theme="dark"
-        >
-          <StyledItem
-            icon={<DashboardOutlined style={iconStyle} />}
-            key="overview"
-            title="Overview"
-          >
-            <Link to="/">Overview</Link>
-          </StyledItem>
-          <StyledItem
-            icon={<BarChartOutlined style={iconStyle} />}
-            key="outtages"
-            title="Outtages"
-          >
-            <Link to="/outtages">Outtages</Link>
-          </StyledItem>
-        </Menu>
+        />
       </Sider>
       <Layout>
         <Content className="main-layout__content">{children}</Content>
