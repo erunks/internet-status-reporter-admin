@@ -1,4 +1,4 @@
-interface ApiRequestConfigParams {
+export interface ApiRequestConfigParams {
   date?: {
     start?: string;
     end?: string;

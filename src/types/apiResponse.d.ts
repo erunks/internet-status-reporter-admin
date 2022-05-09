@@ -4,7 +4,7 @@ interface JsonApiResponseData {
   attributes: object;
 }
 
-interface ModemEventResponseData extends JsonApiResponseData {
+export interface ModemEventResponseData extends JsonApiResponseData {
   attributes: {
     priority: number;
     description: string;
@@ -26,7 +26,7 @@ interface OuttageManualTypedInfo {
   [key: string]: string;
 }
 
-interface OuttageResponseData extends JsonApiResponseData {
+export interface OuttageResponseData extends JsonApiResponseData {
   attributes: {
     downtime: string;
     createdAt: string;

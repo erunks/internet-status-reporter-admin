@@ -8,6 +8,7 @@ import { ApiRequestConfig } from 'types/apiRequest';
 import axios from 'axios';
 import { axiosHeaders } from 'helpers';
 import { API_HOST } from 'helpers/constants';
+import { stringify } from 'qs';
 
 export interface OuttagesResponse {
   data: ApiResponseData[];
@@ -33,6 +34,11 @@ const useOuttages = ({
           {
             headers: { ...headers, ...axiosHeaders },
             params: { ...params },
+            paramsSerializer: (paramsToSerialize) =>
+              stringify(paramsToSerialize, {
+                arrayFormat: 'brackets',
+                encode: false,
+              }),
           }
         );
 

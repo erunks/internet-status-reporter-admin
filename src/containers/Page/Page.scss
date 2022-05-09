@@ -7,13 +7,13 @@
 
   .page__content,
   .page__footer {
+    align-items: center;
+    display: flex;
+    justify-content: center;
     padding: 8px 16px;
   }
 
   .page__content {
-    align-items: center;
-    display: flex;
     flex: 1;
-    justify-content: center;
   }
 }

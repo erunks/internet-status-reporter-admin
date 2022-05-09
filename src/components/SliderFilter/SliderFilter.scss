@@ -1,0 +1,19 @@
+@use 'styles/includes';
+
+.slider-filter {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  grid-template-columns: 1fr;
+  padding: 4px 8px;
+
+  & > .slider-filter__filter-method {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin: 0;
+      padding-right: 6px;
+    }
+  }
+}
