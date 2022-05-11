@@ -1,4 +1,6 @@
 import { generate } from '@ant-design/colors';
+import { stringify } from 'qs';
+import { ApiRequestConfigParams } from 'types/apiRequest';
 
 export const axiosHeaders: Readonly<Record<string, string>> = {
   Accept: 'application/json',
@@ -24,7 +26,17 @@ export const downtimeInSeconds = (downtime: string): number => {
   );
 };
 
-export const neutralDarkPalette = generate('#ccc', { theme: 'dark' });
+export const neutralDarkPalette = generate('#999', {
+  theme: 'default',
+}).reverse();
+
+export const parameterSerializer = (
+  paramsToSerialize: ApiRequestConfigParams
+): string =>
+  stringify(paramsToSerialize, {
+    arrayFormat: 'brackets',
+    encode: false,
+  });
 
 export default {
   axiosHeaders,

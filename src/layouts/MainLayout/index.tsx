@@ -8,7 +8,6 @@ import {
   DashboardOutlined,
   MenuOutlined,
 } from '@ant-design/icons';
-import { neutralDarkPalette } from 'helpers';
 import './MainLayout.scss';
 
 const { Content, Sider } = Layout;
@@ -50,7 +49,6 @@ const MainLayout: FC = ({ children }) => {
         collapsed={collapsed}
         defaultCollapsed
         onCollapse={toggle}
-        style={{ backgroundColor: neutralDarkPalette?.[0] }}
         trigger={
           collapsed ? (
             <MenuOutlined style={iconStyle} />
@@ -62,7 +60,6 @@ const MainLayout: FC = ({ children }) => {
         <Menu
           mode="inline"
           selectedKeys={[currentPath]}
-          style={{ backgroundColor: neutralDarkPalette?.[0] }}
           items={menuItems}
           theme="dark"
         />

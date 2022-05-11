@@ -47,10 +47,7 @@ const Page: FC<IPage> = ({ children, footer, title }) => {
   );
 
   return (
-    <div
-      className={`page ${lowerTitle}`}
-      style={{ backgroundColor: neutralDarkPalette?.[2] }}
-    >
+    <div className={`page ${lowerTitle}`}>
       <header className={`page__header ${lowerTitle}__header`}>
         <PageHeader
           title={PageTitle}
@@ -60,7 +57,11 @@ const Page: FC<IPage> = ({ children, footer, title }) => {
             ) : null
           }
           breadcrumb={pageBreadcrumb}
-          style={{ backgroundColor: neutralDarkPalette?.[7] }}
+          style={{
+            borderBottom: '0.25em solid',
+            borderColor: neutralDarkPalette?.[9],
+            backgroundColor: neutralDarkPalette?.[1],
+          }}
           onBack={(): false | void => showBackButton && navigate(-1)}
         />
       </header>
