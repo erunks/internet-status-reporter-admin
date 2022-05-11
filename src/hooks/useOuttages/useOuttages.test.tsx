@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { ApiRequestConfig } from 'types/apiRequest';
 import { ApiResponse } from 'types/apiResponse';
-import axios from 'axios';
-import { axiosHeaders } from 'helpers';
+import axios, { AxiosRequestConfig } from 'axios';
+import { axiosHeaders, parameterSerializer } from 'helpers';
 import { API_HOST } from 'helpers/constants';
 import * as OuttageSuccessResponse from 'fixtures/outtages_success_response.json';
 import * as OuttageErrorResponse from 'fixtures/outtages_error_response.json';
@@ -25,9 +25,10 @@ describe('useOuttages', () => {
     const params = {
       page: { size: 2 },
     };
-    const expectedRequestOptions: ApiRequestConfig = {
+    const expectedRequestOptions: AxiosRequestConfig<ApiRequestConfig> = {
       headers: { ...axiosHeaders },
       params,
+      paramsSerializer: parameterSerializer,
     };
 
     it('is made to the correct endpoint', () => {
